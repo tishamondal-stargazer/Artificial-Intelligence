@@ -1,0 +1,31 @@
+n = int(input("Enter an odd number: "))
+if n % 2 == 0:
+    print("Please enter an ODD number only.")
+else:
+    magic = [[0]*n for _ in range(n)]
+    i = n // 2
+    j = n - 1
+    for num in range(1, n*n + 1):
+        if i == -1 and j == n:
+            i = 0
+            j = n - 2
+        else:
+            if i < 0:
+                i = n - 1
+            if j == n:
+                j = 0
+        if magic[i][j] != 0:
+            i += 1
+            j -= 2
+            continue
+        else:
+            magic[i][j] = num
+        i -= 1
+        j += 1
+    print("\nMagic Square Matrix:")
+    for row in magic:
+        for val in row:
+            print(val, end=" ")
+        print()
+    magic_sum = n * (n*n + 1) // 2
+    print("\nMagic Sum:", magic_sum)
