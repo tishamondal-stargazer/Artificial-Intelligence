@@ -1,33 +1,61 @@
-# Practical 02 – Water Jug Problem using Production Rules
+# Practical 02 – Water Jug Problem
 
 ## Aim
 To apply the concept of production rules to solve the Water Jug Problem using Artificial Intelligence techniques.
 
-## Objective
-• To understand the Water Jug problem as a state space search problem.  
-• To apply production rules to reach a desired goal state.  
-• To develop problem solving ability using Artificial Intelligence concepts.
-
 ## Description
-The Water Jug Problem is a classic problem used in Artificial Intelligence to demonstrate problem solving using production rules and state space search techniques. In this problem, two jugs of fixed capacities are given without any measuring marks. The objective is to obtain a specific quantity of water using only the allowed operations.
+The Water Jug Problem is a classical Artificial Intelligence puzzle that demonstrates problem solving using state space representation and production rules.
 
-In this practical, two jugs are used:
-• A 4-gallon jug  
-• A 3-gallon jug
+In this problem two jugs of different capacities are given without any measuring marks. The objective is to obtain a specific amount of water using only the allowed operations such as filling, emptying and pouring water between jugs.
 
-The goal is to measure exactly **2 gallons of water in the 4-gallon jug**.
+In this practical:
 
-The following operations can be performed:
+Jug X = 4 gallon jug  
+Jug Y = 3 gallon jug  
 
-• Fill a jug completely  
-• Empty a jug  
-• Pour water from one jug to another until one of them becomes full or empty
+The goal is to obtain exactly 2 gallons of water in the 4-gallon jug.
 
-The problem is solved by representing the state of the system as **(x, y)** where:
+The program uses Breadth First Search (BFS) to explore possible states and find the correct sequence of actions that leads to the goal state.
 
-x → amount of water in the 4-gallon jug  
-y → amount of water in the 3-gallon jug
+The state of the system is represented as:
 
-Different production rules are applied to move from one state to another until the goal state is reached.
+(x , y)
 
-This practical demonstrates how Artificial Intelligence techniques can be used to model real-world problems and find systematic solutions through rule-based reasoning.
+Where  
+x → amount of water in 4 gallon jug  
+y → amount of water in 3 gallon jug
+
+The algorithm explores possible transitions until the goal state is achieved.
+
+## How to Run the Program
+
+1. Install Python on your system.
+
+2. Clone or download this repository.
+
+3. Navigate to the folder:
+
+Artificial-Intelligence/Prac-02-Water-Jug-Problem
+
+4. Run the program using the command:
+
+python ai_Prac2.py
+
+5. Enter the required inputs when prompted.
+
+Example:
+
+Enter Jug 1 Size: 4  
+Enter Jug 2 Size: 3  
+Enter Target Jug Size: 2
+
+## Sample Output
+
+Steps to reach goal:
+
+State (0, 0) -> Action: Fill Jug Y  
+State (0, 3) -> Action: Pour Y -> X  
+State (3, 0) -> Action: Fill Jug Y  
+State (3, 3) -> Action: Pour Y -> X  
+
+Final State: (4, 2)
