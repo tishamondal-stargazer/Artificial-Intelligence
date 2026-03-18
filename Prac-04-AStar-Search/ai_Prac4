@@ -1,0 +1,72 @@
+# 1. Setup the Map (Graph) and the Hunches (Heuristics)
+# Connections: 'Node': {'Neighbor': Cost}
+graph = {
+    'A': {'B': 1, 'C': 3},
+    'B': {'D': 3},
+    'C': {'D': 1, 'E': 2},
+    'D': {'G': 5},
+    'E': {'G': 2},
+    'G': {}
+}
+
+# Heuristics: Straight line distance to Goal 'G'
+heuristics = {'A': 6, 'B': 5, 'C': 4, 'D': 3, 'E': 1, 'G': 0}
+
+def solve_path_astar():
+    # User Input
+    start = input("Enter start node (A-G): ").upper()
+    goal = input("Enter goal node (A-G): ").upper()
+
+    # Step 1: Place starting node in OPEN list
+    open_list = [[start, heuristics[start]]]
+    closed_list = []
+    g_costs = {start: 0}
+    parents = {start: None}
+
+    # Step 2: Loop until OPEN list is empty
+    while len(open_list) > 0:
+
+        # Step 3: Pick node with smallest f = g + h
+        open_list.sort(key=lambda x: x[1])
+        n_data = open_list.pop(0)
+        n = n_data[0]
+
+        # Goal test
+        if n == goal:
+            print("\nSUCCESS!! Path found.")
+            show_result(parents, goal, g_costs[goal])
+            return
+
+        # Step 4: Move node to CLOSED
+        closed_list.append(n)
+
+        # Step 5: Expand neighbors
+        for neighbor, cost in graph[n].items():
+            new_g = g_costs[n] + cost
+            new_f = new_g + heuristics[neighbor]
+
+            if neighbor not in closed_list and neighbor not in [item[0] for item in open_list]:
+                g_costs[neighbor] = new_g
+                open_list.append([neighbor, new_f])
+                parents[neighbor] = n
+            else:
+                if new_g < g_costs.get(neighbor, 9999):
+                    g_costs[neighbor] = new_g
+                    parents[neighbor] = n
+                    for item in open_list:
+                        if item[0] == neighbor:
+                            item[1] = new_f
+
+    print("FAILURE: No path found.")
+
+def show_result(parents, goal, total_cost):
+    path = []
+    curr = goal
+    while curr is not None:
+        path.append(curr)
+        curr = parents[curr]
+    print("Path:", " -> ".join(path[::-1]))
+    print("Total Cost:", total_cost)
+
+# Run the program
+solve_path_astar()
