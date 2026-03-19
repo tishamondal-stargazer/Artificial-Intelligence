@@ -1,34 +1,39 @@
-Practical 05
+Practical 05 – Cryptarithmetic Puzzle using CSP
 
-Aim:
-To implement Cryptarithmetic puzzle (SEND + MORE = MONEY) using Constraint Satisfaction Problem (CSP) approach.
+Aim
+Write a code to implement Cryptarithmetic puzzle (SEND + MORE = MONEY) using the concept of Constraint Satisfaction Problem (CSP).
 
-Objective:
-• Understand the concept of constraint satisfaction problems  
-• Learn how variables, domains and constraints work together  
-• Develop problem solving ability using backtracking technique  
-• Implement cryptarithmetic puzzle using Python  
+Description
+This practical demonstrates the implementation of a Cryptarithmetic puzzle using Python based on the concept of Constraint Satisfaction Problem (CSP). In this type of problem, each alphabet represents a unique digit from 0 to 9, and the goal is to find a valid mapping such that the arithmetic equation holds true.
 
-Description:
-This practical focuses on solving a Cryptarithmetic puzzle using the concept of Constraint Satisfaction Problem (CSP). In this type of problem, digits are replaced by alphabets and the goal is to find a valid mapping such that the arithmetic equation holds true.
+The puzzle SEND + MORE = MONEY is solved by assigning digits to letters while satisfying the following constraints:
 
-The puzzle SEND + MORE = MONEY is used, where each letter represents a unique digit from 0 to 9. The constraints include:
-• Each letter must map to a unique digit  
-• Leading digits cannot be zero  
-• The arithmetic equation must be valid  
+Each letter must have a unique digit  
+Leading letters cannot be assigned zero  
+The final arithmetic equation must be correct  
 
-The solution is obtained using a brute-force approach with permutations combined with constraint checking. All possible mappings of digits to letters are generated and validated against the given conditions.
+The program uses permutations to generate all possible combinations of digits and applies constraints to filter valid solutions. Once a valid mapping is found, the corresponding numerical equation is displayed.
 
-The notebook/code includes:
-• Taking user input for the puzzle  
-• Extracting unique characters  
-• Generating permutations of digits  
-• Applying constraints such as uniqueness and non-zero leading digits  
-• Evaluating the equation  
-• Displaying valid solution and mapping  
+This practical highlights how CSP techniques such as variable assignment, domain constraints, and backtracking can be applied to solve logical puzzles efficiently.
 
-This practical demonstrates how CSP techniques can be applied to solve logical puzzles efficiently using Python.
-
-Tools Used:
+Tools Used
 Python  
 VS Code  
+Command Prompt / Terminal  
+
+How to Run the Program
+Open the folder in VS Code.  
+Open terminal.  
+Run the command:  
+
+python ai_Prac5.py  
+
+Enter the puzzle when prompted.  
+
+Sample Input
+SEND + MORE = MONEY  
+
+Sample Output
+Solution Found:  
+9567 + 1085 == 10652  
+Mapping: {'S': 9, 'E': 5, 'N': 6, 'D': 7, 'M': 1, 'O': 0, 'R': 8, 'Y': 2}
