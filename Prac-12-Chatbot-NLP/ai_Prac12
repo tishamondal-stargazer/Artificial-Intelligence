@@ -1,0 +1,40 @@
+import nltk
+nltk.download('punkt')
+
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+questions = [
+    "What is AI?",
+    "What is machine learning?",
+    "What is Python?",
+    "What is your name?",
+    "How are you?"
+]
+
+answers = [
+    "AI stands for Artificial Intelligence.",
+    "Machine learning is a subset of AI.",
+    "Python is a programming language.",
+    "I am an AI chatbot.",
+    "I am fine, thank you!"
+]
+
+vectorizer = CountVectorizer()
+X = vectorizer.fit_transform(questions)
+
+print("AI Chatbot (type 'exit' to stop)")
+
+while True:
+    user_input = input("\nYou: ")
+
+    if user_input.lower() == "exit":
+        print("Chatbot: Goodbye!")
+        break
+
+    user_vec = vectorizer.transform([user_input])
+    similarity = cosine_similarity(user_vec, X)
+
+    index = similarity.argmax()
+
+    print("Chatbot:", answers[index])
