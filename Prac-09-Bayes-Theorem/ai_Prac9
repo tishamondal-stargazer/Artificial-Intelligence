@@ -1,0 +1,18 @@
+p_cloudy = 0.40
+p_rain = 0.20
+p_cloudy_given_rain = 0.85
+
+p_rain_given_cloudy = (p_rain * p_cloudy_given_rain) / p_cloudy
+
+print("Bayes Theorem - Rain prediction")
+print("-------------------------------")
+print("P(cloudy) =", p_cloudy)
+print("P(Rain) =", p_rain)
+print("P(cloudy | Rain) =", p_cloudy_given_rain)
+
+print("\n Using Bayes Theorem")
+print("p(rain | cloudy) = (P(Rain) * P(cloudy | Rain)) / P(cloudy)")
+
+print("\n Calculated Probability :")
+print("p(rain | cloudy) =", round(p_rain_given_cloudy, 3))
+print("\n probability in percentage =", round(p_rain_given_cloudy * 100, 2), "%")
